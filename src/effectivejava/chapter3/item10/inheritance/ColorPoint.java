@@ -40,10 +40,10 @@ public class ColorPoint extends Point {
         System.out.println(p.equals(cp) + " " + cp.equals(p));
 
         // Second equals function violates transitivity (Page 42)
-        ColorPoint p1 = new ColorPoint(1, 2, Color.RED);
+        /*ColorPoint p1 = new ColorPoint(1, 2, Color.RED);
         Point p2 = new Point(1, 2);
         ColorPoint p3 = new ColorPoint(1, 2, Color.BLUE);
         System.out.printf("%s %s %s%n",
-                p1.equals(p2), p2.equals(p3), p1.equals(p3));
+                p1.equals(p2), p2.equals(p3), p1.equals(p3));*/
     }
 }
