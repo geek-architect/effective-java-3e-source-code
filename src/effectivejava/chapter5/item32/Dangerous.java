@@ -1,11 +1,36 @@
 package effectivejava.chapter5.item32;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 // It is unsafe to store a value in a generic varargs array parameter (Page 146)
 public class Dangerous {
-    // Mixing generics and varargs can violate type safety!
-    static void dangerous(List<String>... stringLists) {
+
+    static void dangerous1(List<String>... stringLists) {
+
+        for(List<String> stringList : stringLists) {
+            System.out.println(stringList);
+        }
+        if(stringLists.getClass().isArray()){
+            System.out.println("stringLists is array");
+        }else{
+            System.out.println("stringLists is not array");
+        }
+
+        System.out.println(stringLists.length);
+
+        if(stringLists instanceof List[]){
+        //if(stringLists instanceof List<String>[]){
+            System.out.println("stringLists instanceof List[]");
+        }else{
+            System.out.println("stringLists instanceof List[]");
+        }
+    }
+    /*
+    Mixing generics and varargs can violate type safety!
+    堆污染案例
+     */
+    static void dangerous2(List<String>... stringLists) {
         List<Integer> intList = List.of(42);
         Object[] objects = stringLists;
         objects[0] = intList; // Heap pollution
@@ -13,6 +38,6 @@ public class Dangerous {
     }
 
     public static void main(String[] args) {
-        dangerous(List.of("There be dragons!"));
+        dangerous1(List.of("There be dragons!","There be dog!"));
     }
 }

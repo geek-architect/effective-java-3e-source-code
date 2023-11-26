@@ -13,5 +13,8 @@ public class Raw {
     private static void unsafeAdd(List list, Object o) {
         list.add(o);
     }
+    private static void safeAdd(List<Object> list, Object o) {
+        list.add(o);
+    }
 }
 

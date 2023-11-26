@@ -10,14 +10,16 @@ public class Favorites {
         favorites.put(Objects.requireNonNull(type), instance);
     }
 
+    //    // Achieving runtime type safety with a dynamic cast
+//    public <T> void putFavorite(Class<T> type, T instance) {
+//        favorites.put(Objects.requireNonNull(type), type.cast(instance));
+//    }
+
     public <T> T getFavorite(Class<T> type) {
         return type.cast(favorites.get(type));
     }
 
-//    // Achieving runtime type safety with a dynamic cast
-//    public <T> void putFavorite(Class<T> type, T instance) {
-//        favorites.put(Objects.requireNonNull(type), type.cast(instance));
-//    }
+
 
     public static void main(String[] args) {
         Favorites f = new Favorites();
