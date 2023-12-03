@@ -6,7 +6,10 @@ import java.util.concurrent.ThreadLocalRandom;
 // Subtle heap pollution (Pages 147-8)
 public class PickTwo {
     // UNSAFE - Exposes a reference to its generic parameter array!
+    @SafeVarargs
     static <T> T[] toArray(T... args) {
+        //args的类型是Object[]，而不是T[]，因为Java不允许创建泛型数组
+        System.out.println(args.getClass().getSimpleName());
         return args;
     }
 

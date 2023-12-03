@@ -4,6 +4,23 @@ import java.util.*;
 
 // Private helper method for wildcard capture (Page 145)
 public class Swap {
+
+    /**
+     * 使用类型参数的方法
+     * @param list
+     * @param i
+     * @param j
+     */
+    public static <E> void swap2(List<E> list, int i, int j) {
+        list.set(i, list.set(j, list.get(i)));
+    }
+
+    /**
+     * 使用通配符的方法
+     * @param list
+     * @param i
+     * @param j
+     */
     public static void swap(List<?> list, int i, int j) {
         swapHelper(list, i, j);
     }
@@ -12,6 +29,7 @@ public class Swap {
     private static <E> void swapHelper(List<E> list, int i, int j) {
         list.set(i, list.set(j, list.get(i)));
     }
+
 
     public static void main(String[] args) {
         // Swap the first and last argument and print the resulting list

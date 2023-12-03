@@ -23,7 +23,7 @@ public class Dangerous {
         //if(stringLists instanceof List<String>[]){
             System.out.println("stringLists instanceof List[]");
         }else{
-            System.out.println("stringLists instanceof List[]");
+            System.out.println("stringLists not instanceof List[]");
         }
     }
     /*
@@ -32,12 +32,14 @@ public class Dangerous {
      */
     static void dangerous2(List<String>... stringLists) {
         List<Integer> intList = List.of(42);
+        //数组支持协变
         Object[] objects = stringLists;
         objects[0] = intList; // Heap pollution
-        String s = stringLists[0].get(0); // ClassCastException
+        String s= stringLists[0].get(0); // ClassCastException
+        System.out.println(s);
     }
 
     public static void main(String[] args) {
-        dangerous1(List.of("There be dragons!","There be dog!"));
+        dangerous2(List.of("There be dragons!"),List.of("There be dog!"));
     }
 }
