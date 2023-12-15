@@ -7,13 +7,18 @@ import java.util.concurrent.ThreadLocalRandom;
 // Safe version of PickTwo using lists instead of arrays (Page 150)
 public class SafePickTwo {
     static <T> List<T> pickTwo(T a, T b, T c) {
+        List<T> result=null;
         switch (ThreadLocalRandom.current().nextInt(3)) {
             case 0:
-                return List.of(a, b);
+                result= List.of(a, b);
             case 1:
-                return List.of(a, c);
+                result=  List.of(a, c);
             case 2:
-                return List.of(b, c);
+                result= List.of(b, c);
+        }
+        if (result != null){
+            System.out.println(result.getClass().getSimpleName());
+            return result;
         }
         throw new AssertionError();
     }

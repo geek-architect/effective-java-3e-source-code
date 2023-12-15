@@ -31,9 +31,9 @@ public class Dangerous {
     堆污染案例
      */
     static void dangerous2(List<String>... stringLists) {
-        List<Integer> intList = List.of(42);
         //数组支持协变
         Object[] objects = stringLists;
+        List<Integer> intList = List.of(42);
         objects[0] = intList; // Heap pollution
         String s= stringLists[0].get(0); // ClassCastException
         System.out.println(s);

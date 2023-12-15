@@ -25,8 +25,23 @@ public class PickTwo {
         throw new AssertionError(); // Can't get here
     }
 
-    public static void main(String[] args) {
+
+
+    static void demo01(){
+        String[] attributes = toArray("Good", "Fast", "Cheap");
+        System.out.println(Arrays.toString(attributes));
+    }
+
+    static void demo02(){
         String[] attributes = pickTwo("Good", "Fast", "Cheap");
         System.out.println(Arrays.toString(attributes));
+    }
+
+
+    public static void main(String[] args) {
+
+        demo01();
+        //demo02();
+
     }
 }
