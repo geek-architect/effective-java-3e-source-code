@@ -42,9 +42,20 @@ public enum Operation {
     public abstract double apply(double x, double y);
 
     // Implementing a fromString method on an enum type (Page 164)
+//    private static final Map<String, Operation> stringToEnum =
+//            Stream.of(values()).collect(
+//                    toMap(Object::toString, e -> e));
+
     private static final Map<String, Operation> stringToEnum =
             Stream.of(values()).collect(
-                    toMap(Object::toString, e -> e));
+                    toMap(
+                            // 键的转换函数：将枚举常量转换为它的字符串表示形式
+                            (Operation operation) -> operation.toString(),
+
+                            // 值的转换函数：直接返回枚举常量本身
+                            (Operation operation) -> operation
+                    ));
+
 
     // Returns Operation for string, if any
     public static Optional<Operation> fromString(String symbol) {
@@ -57,5 +68,8 @@ public enum Operation {
         for (Operation op : Operation.values())
             System.out.printf("%f %s %f = %f%n",
                     x, op, y, op.apply(x, y));
+
+        // 从字符串中获取枚举常量
+        System.out.println(Operation.fromString("+"));
     }
 }

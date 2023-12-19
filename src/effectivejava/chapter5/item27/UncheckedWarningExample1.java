@@ -2,10 +2,12 @@ package effectivejava.chapter5.item27;
 
 import java.util.*;
 
+@SuppressWarnings("unchecked")
 public class UncheckedWarningExample1 {
 
-
+    
     public static void main(String[] args) {
+
         Set set = new HashSet();
         set.add("Orange");
         set.add("Grape");
